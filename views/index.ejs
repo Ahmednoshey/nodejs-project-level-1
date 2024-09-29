@@ -57,24 +57,16 @@
             </tr>
           </thead>
           <tbody id="tbody2">
-
-            <%= 
-              arr.map((item) => {
-                
-              })
-              
-              
-              %>
-
+          <% arr.forEach((item,index) => { %>
             <tr>
-              <td>1</td>
-              <td>المصرية</td>
-              <td>500</td>
-              <td>مصر شركه</td>
-              <td>نور العاشر</td>
-              <td>22/10/2024</td>
-              <td>22/11/2024</td>
-              <td>تم التحصيل</td>
+              <td><%= index+1 %></td>
+              <td><%= item.Customer %></td>
+              <td><%=item.price  %></td>
+              <td><%=item.Back  %></td>
+              <td><%=item.Branch  %></td>
+              <td><%=item.First_Date  %></td>
+              <td><%=item.Second_Date  %></td>
+              <td><%=item.Info  %></td>
               <td>
                 <a
                   data-bs-toggle="tooltip"
@@ -106,6 +98,7 @@
                 </a>
               </td>
             </tr>
+          <% }) %>
           </tbody>
           <tfoot id="tfoot2">
 
