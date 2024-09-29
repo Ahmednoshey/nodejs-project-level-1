@@ -22,6 +22,7 @@ liveReloadServer.server.once("connection", () => {
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true }));
+
 app.get("/", (req, res) => {
   res.render("index")
 });
@@ -46,3 +47,17 @@ mongoose
 })
   .catch((error) => {console.log(error)});
 
+app.post("/user/add.html", (req, res) => {
+     const mydata = new Mydata(req.body);
+  mydata.save()
+     .then( result => {
+     res.redirect("/");
+     })
+  .catch( err => {
+   console.log(err);
+   });
+   });
+    
+
+
+    

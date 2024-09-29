@@ -43,7 +43,7 @@
             >
 
            
-            <form class="d-flex" role="search">
+            <form  class="d-flex" role="search">
               <input
               readonly
               id="searchbtn"
@@ -62,10 +62,11 @@
           </div>
         </nav>
 
-        <form class="mx-0 row gx-3 gy-4 mt-3 info" dir="rtl">
+        <form action="/user/add.html" method="post" class="mx-0 row gx-3 gy-4 mt-3 info" dir="rtl">
           <div class="col-md-12">
             <label for="inputcust" class="form-label">العميل :</label>
             <input
+            name="Customer"
               placeholder="Customer"
               type="text"
               class="form-control"
@@ -78,6 +79,7 @@
           <div class="col-md-6">
             <label for="inputprice" class="form-label">المبلغ :</label>
             <input
+            name="price"
               placeholder="price"
               type="number"
               class="form-control"
@@ -87,7 +89,7 @@
 
           <div class="col-md-6">
             <label for="inputBank" class="form-label">البنك :</label>
-            <select id="inputBank" class="form-select" onchange="changeimg(this)" >
+            <select id="inputBank" class="form-select" onchange="changeimg(this)" name="Back" >
               <option selected hidden disabled>Choose Bank ...</option>
               <option value="abc شركة">ABC شركة</option>
               <option value="abc منشأة">ABC منشأة</option>
@@ -105,7 +107,7 @@
 <div>
           <div class="col-md-6">
             <label for="inputbranch" class="form-label">الفرع :</label>
-            <select id="inputbranch" class="form-select">
+            <select id="inputbranch" class="form-select" name="Branch">
               <option selected hidden disabled>Choose Branch ...</option>
               <option>نور العاشر</option>
               <option>اكتوبر</option>
@@ -120,6 +122,7 @@
               type="date"
               class="form-control"
               id="inputdate1"
+              name="First_Date"
             />
           </div>
         </div>
@@ -131,6 +134,7 @@
               type="date"
               class="form-control"
               id="inputdate2"
+              name="Second_Date"
             />
           </div>
         </div>
@@ -138,7 +142,7 @@
 <div>
           <div class="col-md-6">
             <label for="inputhala" class="form-label">حالة الشيك :</label>
-            <select id="inputhala" class="form-select">
+            <select id="inputhala" class="form-select" name="Info">
               <option selected hidden disabled></option>
               <option>تم التحصيل</option>
               <option>مرتد</option>
@@ -146,7 +150,7 @@
           </div>
           
             <div class="col-md-6 photobank">
-              <img src="../img/1.png" alt="" id="imgbank">
+              <img src="../img/1.png" alt="" id="imgbank" name="Bank_Img">
             </div>
             <br>
 
@@ -202,13 +206,7 @@
          >
            Close
          </button>
-         <a 
-         id="sendbtn"
-         onclick="creat()"
-         type="button" class="btn btn-danger"
-         onclick="deleteitem()">
-           OK
-       </a>
+         <button id="sendbtn" type="submit" class="btn btn-danger">OK</button>
        </div>
      </div>
    </div>
