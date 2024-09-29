@@ -24,8 +24,11 @@ app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  res.render("index")
-});
+  Mydata.find()
+  .then((result) => {res.render("index",{arr:result})})
+  .catch((err) => {console.log(err)})
+ });
+
 app.get("/user/add.html", (req, res) => {
   res.render("user/add")
 });
@@ -36,6 +39,9 @@ app.get("/user/view.html", (req, res) => {
   res.render("user/view")
 });
 
+
+
+  
 
 
 mongoose
