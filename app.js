@@ -35,9 +35,6 @@ app.get("/user/add.html", (req, res) => {
 app.get("/user/edit.html", (req, res) => {
   res.render("user/edit")
 });
-app.get("/user/view.html", (req, res) => {
-  res.render("user/view")
-});
 
 
 
@@ -64,6 +61,16 @@ app.post("/user/add.html", (req, res) => {
    });
    });
     
+   app.get("/user/:id", (req, res) => {
+    Mydata.findById(req.params.id)
+    .then((result) => {res.render("user/view",{obj:result})})
+    .catch((err) => {console.log(err)})
+   });
+  
+
+  
+
+  
 
 
     

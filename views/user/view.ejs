@@ -158,14 +158,14 @@
           aria-label="breadcrumb"
         >
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">
               Ahmed Noshey
             </li>
           </ol>
 
           <p class="" id="logo">
-            <span class="fw-medium fs-6">Id :</span> 6487021520bcf1af6319484c
+            <span class="fw-medium fs-6">Id :</span> <%= obj._id %>
           </p>
         </nav>
 
@@ -173,7 +173,45 @@
         id="tableview"
           style="width: 70%"
           class="ms-1 table mt-5 table-striped table-bordered" dir="rtl">
+<thead>
+  <tr>
+    <th scope="col">العميل</th>
+    <th class="fw-normal" scope="col"><%= obj.Customer %></th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <th scope="row">المبلغ</th>
+    <td><%= obj.price %></td>
+  </tr>
 
+  <tr>
+    <th scope="row">البنك</th>
+    <td><%= obj.Back %></td>
+  </tr>
+
+  <tr>
+    <th scope="row">الفرع</th>
+    <td><%= obj.Branch %></td>
+  </tr>
+
+  <tr>
+    <th scope="row">تاريخ الايداع</th>
+    <td><%= obj.First_Date %></td>
+  </tr>
+
+  <tr>
+    <th scope="row">تاريخ التحصيل</th>
+    <td><%= obj.Second_Date %></td>
+  </tr>
+
+  <tr>
+    <th scope="row">حالة الشيك</th>
+    <td><%= obj.Info %></td>
+  </tr>
+
+</tbody>
+          
         </table>
         <div class="photobank">
           <img src="../img/1.png" alt="" id="imgbank">
