@@ -23,10 +23,20 @@ liveReloadServer.server.once("connection", () => {
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
-  Mydata.find()
-  .then((result) => {res.render("home",{mytitle:"Home Page",arr:result})})
-  .catch((err) => {console.log(err)})
+  res.render("index")
 });
+app.get("/user/add.html", (req, res) => {
+  res.render("user/add")
+});
+app.get("/user/edit.html", (req, res) => {
+  res.render("user/edit")
+});
+app.get("/user/view.html", (req, res) => {
+  res.render("user/view")
+});
+
+
+
 mongoose
   .connect("mongodb+srv://ahmedeldomiaty0:Bhm4PvQxL0DmLahK@nodejsproject.x786z.mongodb.net/alldata?retryWrites=true&w=majority&appName=nodejsproject")
   .then(() => {
@@ -35,13 +45,4 @@ mongoose
   });
 })
   .catch((error) => {console.log(error)});
-  app.post("/", (req, res) => {
-    const mydata = new Mydata(req.body);
-    mydata.save()
-    .then( result => {
-      res.redirect("/");
-    })
-    .catch( err => {
-      console.log(err);
-    });
-  });
+
