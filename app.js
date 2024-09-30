@@ -31,9 +31,10 @@ app.get("/", (req, res) => {
   .catch((err) => {console.log(err)})
  });
 
-app.get("/user/add.html", (req, res) => {
-  res.render("user/add")
-});
+ app.get("/user/add.html", (req, res) => {
+ res.render("user/add")
+  });
+  
 
 mongoose
   .connect("mongodb+srv://ahmedeldomiaty0:Bhm4PvQxL0DmLahK@nodejsproject.x786z.mongodb.net/alldata?retryWrites=true&w=majority&appName=nodejsproject")
@@ -45,8 +46,7 @@ mongoose
   .catch((error) => {console.log(error)});
 
 app.post("/user/add.html", (req, res) => {
-     const mydata = new Mydata(req.body);
-  mydata.save()
+  Mydata.create(req.body)
      .then( result => {
      res.redirect("/");
      })
@@ -78,6 +78,13 @@ app.delete("/:id", (req, res) => {
 .then((result) => {res.redirect("/")})
 .catch((err) => {console.log(err)})
 }); 
+
+app.put("/edit/:id", (req, res) => {
+  console.log(req.body);
+  Mydata.findByIdAndUpdate(req.params.id, req.body)
+  .then((result) => {res.redirect("/")})
+.catch((err) => {console.log(err)})
+});
 
   
   

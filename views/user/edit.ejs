@@ -174,10 +174,11 @@
 
 
 
-        <form class="mx-0 row gx-3 gy-4  info" dir="rtl">
+        <form action="/edit/<%= obj._id %>?_method=PUT" method="post" class="mx-0 row gx-3 gy-4  info" dir="rtl">
           <div class="col-md-12">
             <label for="inputcust" class="form-label">العميل :</label>
             <input
+              name="Customer"
               placeholder="Customer"
               type="text"
               class="form-control"
@@ -191,6 +192,7 @@
           <div class="col-md-6">
             <label for="inputprice" class="form-label">المبلغ :</label>
             <input
+              name="price"
               placeholder="price"
               type="number"
               class="form-control"
@@ -215,7 +217,7 @@
 <div>
           <div class="col-md-6">
             <label for="inputbranch" class="form-label">الفرع :</label>
-            <select id="inputbranch" class="form-select">
+            <select id="inputbranch" class="form-select" name="Branch">
               <option selected hidden disabled>Choose Branch ...</option>
               <option <%=obj.Branch === "نور العاشر"?"selected":null   %>>نور العاشر</option>
               <option <%=obj.Branch === "اكتوبر"?"selected":null   %>>اكتوبر</option>
@@ -227,6 +229,7 @@
           <div class="col-md-6">
             <label for="inputdate1" class="form-label">تاريخ الايداع :</label>
             <input
+            name="First_Date"
               type="date"
               class="form-control"
               id="inputdate1"
@@ -239,6 +242,7 @@
           <div class="col-md-6">
             <label for="inputdate2" class="form-label">تاريخ التحصيل :</label>
             <input
+            name="Second_Date"
               type="date"
               class="form-control"
               id="inputdate2"
@@ -250,7 +254,7 @@
 <div>
           <div class="col-md-6">
             <label for="inputhala" class="form-label">حالة الشيك :</label>
-            <select id="inputhala" class="form-select">
+            <select id="inputhala" class="form-select" name="Info">
               <option selected hidden disabled>Choose Info ...</option>
               <option <%=obj.Info === "تم التحصيل"?"selected":null   %>>تم التحصيل</option>
               <option <%=obj.Info === "مرتد"?"selected":null   %>>مرتد</option>
@@ -259,16 +263,16 @@
 
           
             <div class="col-md-6 photobank">
-              <img src="../img/1.png" alt="" id="imgbank">
+              <img src="../img/1.png" alt="" id="imgbank" name="Bank_Img">
             </div>
             <br>
 
-          <div class="col-12">
-            <a class="btn btn-primary"
-            onclick="updateitem()"
-            href="../index.html">
+            <div class="col-12">
+            <button type="submit" class="btn btn-primary">
               Update changes
-          </a>
+            </button>
+      
+
             <button
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
