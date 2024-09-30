@@ -4,7 +4,7 @@ const port = 3000;
 const mongoose = require("mongoose");
 const Mydata = require("./models/MydataSchema");
 app.use(express.static('public'))
-
+var moment = require('moment');
 
 //Auto refresh
 const path = require("path");
@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   Mydata.find()
-  .then((result) => {res.render("index",{arr:result})})
+  .then((result) => {res.render("index",{arr:result,moment:moment})})
   .catch((err) => {console.log(err)})
  });
 

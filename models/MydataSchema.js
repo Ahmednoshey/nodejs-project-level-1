@@ -8,7 +8,6 @@ const articleSchema = new Schema({
   First_Date: String,
   Second_Date: String,
   Info: String,
-
-});
+},{ timestamps: true });
 const Mydata = mongoose.model("Mydataa", articleSchema);
 module.exports = Mydata;
