@@ -38,74 +38,83 @@
 
         <%- include('./components/navbar.ejs') %>
 
-        <table dir="rtl"
-        id="myTable"
-          style="width: 99%;margin-top: 5px !important;"
-          class=" dark text-center mx-auto table mt-5 table-striped table-bordered"
-        >
-          <thead >
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">العميل</th>
-              <th scope="col">المبلغ</th>
-              <th scope="col">البنك</th>
-              <th scope="col">الفرع</th>
-              <th scope="col">تاريخ الايداع</th>
-              <th scope="col">تاريخ التحصيل</th>
-              <th scope="col">الحاله</th>
-              <th scope="col">action</th>
-            </tr>
-          </thead>
-          <tbody id="tbody2">
-          <% arr.forEach((item,index) => { %>
-            <tr>
-              <td><%= index+1 %></td>
-              <td><%= item.Customer %></td>
-              <td><%=item.price  %></td>
-              <td><%=item.Back  %></td>
-              <td><%=item.Branch  %></td>
-              <td><%=item.First_Date  %></td>
-              <td><%=item.Second_Date  %></td>
-              <td><%=item.Info  %></td>
-              <td>
-                <a
-                  data-bs-toggle="tooltip"
-                  data-bs-title="View details"
-                  data-bs-placement="top"
-                  class="btn btn-primary btn-sm"
-                  href="/view/<%= item._id %>"
-                  ><i class="bi bi-eye"></i
-                ></a>
+        <% if (arr.length === 0) { %>
+          <div style="width: 100%;margin-top: 100px; text-align: center;">
+          <h1>No Data Available</h1>
+        </div>
+         <% } %>
 
-                <a
-                  data-bs-toggle="tooltip"
-                  data-bs-title="Edit user"
-                  data-bs-placement="top"
-                  class="btn btn-primary btn-sm"
-                  href="/edit/<%= item._id %>"
-                  
-                >
-                  <i class="bi bi-pencil"></i>
-                </a>
-                <form action="/<%= item._id %>?_method=DELETE" method="post" style="display: inline;">
-                <button
-                  data-bs-toggle="tooltip"
-                  data-bs-title="Delete user"
-                  data-bs-placement="top"
-                  class="btn btn-danger btn-sm"
-                  type="submit"
-                >
-                  <i class="bi bi-trash"></i>
-                </button>
-              </form>
-              </td>
-            </tr>
-          <% }) %>
-          </tbody>
-          <tfoot id="tfoot2">
+         <% if (arr.length > 0) { %>
+          <table dir="rtl"
+          id="myTable"
+            style="width: 99%;margin-top: 5px !important;"
+            class=" dark text-center mx-auto table mt-5 table-striped table-bordered"
+          >
+            <thead >
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">العميل</th>
+                <th scope="col">المبلغ</th>
+                <th scope="col">البنك</th>
+                <th scope="col">الفرع</th>
+                <th scope="col">تاريخ الايداع</th>
+                <th scope="col">تاريخ التحصيل</th>
+                <th scope="col">الحاله</th>
+                <th scope="col">action</th>
+              </tr>
+            </thead>
+            <tbody id="tbody2">
+            <% arr.forEach((item,index) => { %>
+              <tr>
+                <td><%= index+1 %></td>
+                <td><%= item.Customer %></td>
+                <td><%=item.price  %></td>
+                <td><%=item.Bank  %></td>
+                <td><%=item.Branch  %></td>
+                <td><%=item.First_Date  %></td>
+                <td><%=item.Second_Date  %></td>
+                <td><%=item.Info  %></td>
+                <td>
+                  <a
+                    data-bs-toggle="tooltip"
+                    data-bs-title="View details"
+                    data-bs-placement="top"
+                    class="btn btn-primary btn-sm"
+                    href="/view/<%= item._id %>"
+                    ><i class="bi bi-eye"></i
+                  ></a>
+  
+                  <a
+                    data-bs-toggle="tooltip"
+                    data-bs-title="Edit user"
+                    data-bs-placement="top"
+                    class="btn btn-primary btn-sm"
+                    href="/edit/<%= item._id %>"
+                    
+                  >
+                    <i class="bi bi-pencil"></i>
+                  </a>
+                  <form action="/<%= item._id %>?_method=DELETE" method="post" style="display: inline;">
+                  <button
+                    data-bs-toggle="tooltip"
+                    data-bs-title="Delete user"
+                    data-bs-placement="top"
+                    class="btn btn-danger btn-sm"
+                    type="submit"
+                  >
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </form>
+                </td>
+              </tr>
+            <% }) %>
+            </tbody>
+            <tfoot id="tfoot2">
+  
+            </tfoot>
+          </table>
+         <% } %>
 
-          </tfoot>
-        </table>
       </section>
     </main>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -114,5 +123,6 @@
     <script src="./js/bootstrap.bundle.min.js"></script>
 
     <script src="./js/sidebars.js"></script>
+    <script src="../js/main.js"></script>
   </body>
 </html>

@@ -160,11 +160,11 @@
         <nav class="px-2 mt-4 d-flex flex-wrap justify-content-between" aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Ahmed Noshey</li>
+            <li class="breadcrumb-item active" aria-current="page"><%= obj.Customer %></li>
           </ol>
 
 
-          <p class="me-md-5" id="logo"> <span class="fw-medium fs-6">Id :</span> 6487021520bcf1af6319484c</p>
+          <p class="me-md-5" id="logo"> <span class="fw-medium fs-6">Id :</span> <%= obj._id %></p>
         </nav>
 
 
@@ -186,7 +186,7 @@
             />
           </div>
 
-       
+      
 
           <div class="col-md-6">
             <label for="inputprice" class="form-label">المبلغ :</label>
@@ -201,28 +201,24 @@
 
           <div class="col-md-6">
             <label for="inputBank" class="form-label">البنك :</label>
-            <select id="inputBank" class="form-select" onchange="changeimg(this)" value="<%= obj.Bank %>" >
+            <select id="inputBank" class="form-select" onchange="changeimg(this)" name="Bank" >
               <option selected hidden disabled>Choose Bank ...</option>
-              <option value="abc شركة">ABC شركة</option>
-              <option value="abc منشأة">ABC منشأة</option>
-              <option value="مصر شركة">مصر شركة</option>
-              <option value="مصر فردي">مصر فردي</option>
-              <option value="القاهرة شركة">القاهرة شركة</option>
-              <option value="القاهرة منشأة">القاهرة منشأة</option>
-              <option value="cib">CIB</option>
-              <option value="الاسكندرية شركة">الاسكندرية شركة</option>
-              <option value="الاسكندرية شخصي">الاسكندرية شخصي</option>
-              <option value="قطر">قطر</option>
-              <option value="الاهلي">الاهلي</option>
+      <% const bankarr = ["abc شركة","abc منشأة","مصر شركة","مصر فردي",
+      "القاهرة شركة","القاهرة منشأة","cib","الاسكندرية شركة","الاسكندرية شخصي",
+      "قطر","الاهلي"] %>
+
+              <% bankarr.forEach(item => { %>
+                <option  <%=obj.Bank === item?"selected":null   %> value="<%= item %>"><%= item %></option>
+              <% }) %>
             </select>
           </div>
 <div>
           <div class="col-md-6">
             <label for="inputbranch" class="form-label">الفرع :</label>
-            <select id="inputbranch" class="form-select" value="<%= obj.Branch %>">
+            <select id="inputbranch" class="form-select">
               <option selected hidden disabled>Choose Branch ...</option>
-              <option>نور العاشر</option>
-              <option>اكتوبر</option>
+              <option <%=obj.Branch === "نور العاشر"?"selected":null   %>>نور العاشر</option>
+              <option <%=obj.Branch === "اكتوبر"?"selected":null   %>>اكتوبر</option>
             </select>
           </div>
         </div>
@@ -254,10 +250,10 @@
 <div>
           <div class="col-md-6">
             <label for="inputhala" class="form-label">حالة الشيك :</label>
-            <select id="inputhala" class="form-select" value="<%= obj.Info %>">
+            <select id="inputhala" class="form-select">
               <option selected hidden disabled>Choose Info ...</option>
-              <option>تم التحصيل</option>
-              <option>مرتد</option>
+              <option <%=obj.Info === "تم التحصيل"?"selected":null   %>>تم التحصيل</option>
+              <option <%=obj.Info === "مرتد"?"selected":null   %>>مرتد</option>
             </select>
           </div>
 
@@ -333,6 +329,7 @@
     <script src="../js/bootstrap.bundle.min.js"></script>
 
     <script src="../js/sidebars.js"></script>
+    <script src="../js/main.js"></script>
 
   </body>
 </html>

@@ -91,17 +91,13 @@
             <label for="inputBank" class="form-label">البنك :</label>
             <select id="inputBank" class="form-select" onchange="changeimg(this)" name="Bank" >
               <option selected hidden disabled>Choose Bank ...</option>
-              <option value="abc شركة">ABC شركة</option>
-              <option value="abc منشأة">ABC منشأة</option>
-              <option value="مصر شركة">مصر شركة</option>
-              <option value="مصر فردي">مصر فردي</option>
-              <option value="القاهرة شركة">القاهرة شركة</option>
-              <option value="القاهرة منشأة">القاهرة منشأة</option>
-              <option value="cib">CIB</option>
-              <option value="الاسكندرية شركة">الاسكندرية شركة</option>
-              <option value="الاسكندرية شخصي">الاسكندرية شخصي</option>
-              <option value="قطر">قطر</option>
-              <option value="الاهلي">الاهلي</option>
+      <% const bankarr = ["abc شركة","abc منشأة","مصر شركة","مصر فردي",
+      "القاهرة شركة","القاهرة منشأة","cib","الاسكندرية شركة","الاسكندرية شخصي",
+      "قطر","الاهلي"] %>
+
+              <% bankarr.forEach(item => { %>
+                <option value="<%= item %>"><%= item %></option>
+              <% }) %>
             </select>
           </div>
 <div>
@@ -221,5 +217,6 @@
     <script src="../js/bootstrap.bundle.min.js"></script>
 
     <script src="../js/sidebars.js"></script>
+    <script src="../js/main.js"></script>
   </body>
 </html>
