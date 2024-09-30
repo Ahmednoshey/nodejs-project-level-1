@@ -5,6 +5,8 @@ const mongoose = require("mongoose");
 const Mydata = require("./models/MydataSchema");
 app.use(express.static('public'))
 var moment = require('moment');
+var methodOverride = require('method-override')
+app.use(methodOverride('_method'))
 
 //Auto refresh
 const path = require("path");
@@ -32,14 +34,6 @@ app.get("/", (req, res) => {
 app.get("/user/add.html", (req, res) => {
   res.render("user/add")
 });
-app.get("/user/edit.html", (req, res) => {
-  res.render("user/edit")
-});
-
-
-
-  
-
 
 mongoose
   .connect("mongodb+srv://ahmedeldomiaty0:Bhm4PvQxL0DmLahK@nodejsproject.x786z.mongodb.net/alldata?retryWrites=true&w=majority&appName=nodejsproject")
@@ -61,13 +55,31 @@ app.post("/user/add.html", (req, res) => {
    });
    });
     
-   app.get("/user/:id", (req, res) => {
+   app.get("/view/:id", (req, res) => {
     Mydata.findById(req.params.id)
     .then((result) => {res.render("user/view",{obj:result})})
     .catch((err) => {console.log(err)})
    });
   
+   app.get("/edit/:id", (req, res) => {
+    Mydata.findById(req.params.id)
+    .then((result) => {res.render("user/edit",{obj:result})})
+    .catch((err) => {console.log(err)})
+  });
 
+  app.delete("/edit/:id", (req, res) => {
+    Mydata.deleteOne({ _id: req.params.id })
+  .then((result) => {res.redirect("/")})
+  .catch((err) => {console.log(err)})
+}); 
+
+app.delete("/:id", (req, res) => {
+  Mydata.findByIdAndDelete(req.params.id)
+.then((result) => {res.redirect("/")})
+.catch((err) => {console.log(err)})
+}); 
+
+  
   
 
   

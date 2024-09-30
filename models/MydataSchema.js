@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const articleSchema = new Schema({
   Customer: String,
   price: Number,
-  Back: String,
+  Bank: String,
   Branch: String,
   First_Date: String,
   Second_Date: String,

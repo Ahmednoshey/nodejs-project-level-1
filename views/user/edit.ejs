@@ -182,6 +182,7 @@
               type="text"
               class="form-control"
               id="inputcust"
+              value="<%= obj.Customer %>"
             />
           </div>
 
@@ -194,12 +195,13 @@
               type="number"
               class="form-control"
               id="inputprice"
+              value="<%= obj.price %>"
             />
           </div>
 
           <div class="col-md-6">
             <label for="inputBank" class="form-label">البنك :</label>
-            <select id="inputBank" class="form-select" onchange="changeimg(this)" >
+            <select id="inputBank" class="form-select" onchange="changeimg(this)" value="<%= obj.Bank %>" >
               <option selected hidden disabled>Choose Bank ...</option>
               <option value="abc شركة">ABC شركة</option>
               <option value="abc منشأة">ABC منشأة</option>
@@ -217,7 +219,7 @@
 <div>
           <div class="col-md-6">
             <label for="inputbranch" class="form-label">الفرع :</label>
-            <select id="inputbranch" class="form-select">
+            <select id="inputbranch" class="form-select" value="<%= obj.Branch %>">
               <option selected hidden disabled>Choose Branch ...</option>
               <option>نور العاشر</option>
               <option>اكتوبر</option>
@@ -232,6 +234,7 @@
               type="date"
               class="form-control"
               id="inputdate1"
+              value="<%= obj.First_Date %>"
             />
           </div>
         </div>
@@ -243,6 +246,7 @@
               type="date"
               class="form-control"
               id="inputdate2"
+              value="<%= obj.Second_Date %>"
             />
           </div>
         </div>
@@ -250,8 +254,8 @@
 <div>
           <div class="col-md-6">
             <label for="inputhala" class="form-label">حالة الشيك :</label>
-            <select id="inputhala" class="form-select">
-              <option selected hidden disabled></option>
+            <select id="inputhala" class="form-select" value="<%= obj.Info %>">
+              <option selected hidden disabled>Choose Info ...</option>
               <option>تم التحصيل</option>
               <option>مرتد</option>
             </select>
@@ -311,12 +315,12 @@
               >
                 Close
               </button>
-              <a 
-              href="../index.html"
-              type="button" class="btn btn-danger"
-              onclick="deleteitem()">
+              <form action="/edit/<%= obj._id %>?_method=DELETE" method="post">
+              <button
+              type="submit" class="btn btn-danger">
                 Delete
-            </a>
+            </button>
+          </form>
             </div>
           </div>
         </div>
