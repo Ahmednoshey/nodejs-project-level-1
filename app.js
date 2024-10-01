@@ -86,13 +86,23 @@ app.put("/edit/:id", (req, res) => {
 });
 
   
-app.post("/search", (req, res) => {
-  Mydata.find({Branch:"نور العاشر"})
-  .then((result) => {res.render("user/search",{arr:result})})
-  .catch( err => {
-   console.log(err);
-   });
-   });  
+
+   
+   app.post("/search", (req, res) => {
+    Mydata.find({Second_Date: req.body.Search_Date})
+    .then((result) => {res.render("user/search",{arr:result})})
+    .catch( err => {
+     console.log(err);
+     });
+     });
+
+     app.post("/Search_Branch", (req, res) => {
+      Mydata.find({ $and: [{Second_Date: req.body.Search_Date},{Branch: req.body.Search_Branch}]})
+      .then((result) => {res.render("user/search",{arr:result})})
+      .catch( err => {
+       console.log(err);
+       });
+       });
 
   
 

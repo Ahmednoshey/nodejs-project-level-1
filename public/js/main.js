@@ -41,3 +41,7 @@ automood.onclick = function(){
 function changeimg(element){
   imgbank.src = "../img/" + element.value + ".png" ;
 }
+
+function getdates(){
+  document.getElementById("SearchBranch").value = document.getElementById("searchbtn").value
+}
