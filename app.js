@@ -80,7 +80,6 @@ app.delete("/:id", (req, res) => {
 }); 
 
 app.put("/edit/:id", (req, res) => {
-  console.log(req.body);
   Mydata.findByIdAndUpdate(req.params.id, req.body)
   .then((result) => {res.redirect("/")})
 .catch((err) => {console.log(err)})
