@@ -34,8 +34,8 @@ app.get("/", (req, res) => {
  app.get("/user/add.html", (req, res) => {
  res.render("user/add")
   });
-  
 
+  
 mongoose
   .connect("mongodb+srv://ahmedeldomiaty0:Bhm4PvQxL0DmLahK@nodejsproject.x786z.mongodb.net/alldata?retryWrites=true&w=majority&appName=nodejsproject")
   .then(() => {
@@ -86,7 +86,13 @@ app.put("/edit/:id", (req, res) => {
 });
 
   
-  
+app.post("/search", (req, res) => {
+  Mydata.find({Branch:"نور العاشر"})
+  .then((result) => {res.render("user/search",{arr:result})})
+  .catch( err => {
+   console.log(err);
+   });
+   });  
 
   
 

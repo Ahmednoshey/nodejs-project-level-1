@@ -107,29 +107,8 @@
       <%- include('../components/sidebar.ejs',{activepage:"search"}) %>
 
       <section class="w-100">
-        <nav class="navbar bg-body-tertiary">
-          <div
-            class="container-fluid justify-content-center justify-content-md-between"
-            >
-            <a class="navbar-brand fw-medium fs-3 mb-1 mb-md-0"
-              >Cheques<sup> under </sup>collection </a
-            >
-
-
-            <form class="d-flex" role="search">
-              <input
-              id="searchbtn"
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <a class="btn btn-outline-success"  onclick="searchdata()">
-                Search
-              </a>
-            </form>
-          </div>
-        </nav>
+      
+        <%- include('../components/navbar.ejs') %>
 
         <table dir="rtl"
           style="width: 99%"
@@ -149,7 +128,49 @@
             </tr>
           </thead>
           <tbody id="tbody2">
-            
+            <% arr.forEach((item,index) => { %>
+              <tr>
+                <td><%= index+1 %></td>
+                <td><%= item.Customer %></td>
+                <td><%=item.price  %></td>
+                <td><%=item.Bank  %></td>
+                <td><%=item.Branch  %></td>
+                <td><%=item.First_Date  %></td>
+                <td><%=item.Second_Date  %></td>
+                <td><%=item.Info  %></td>
+                <td>
+                  <a
+                    data-bs-toggle="tooltip"
+                    data-bs-title="View details"
+                    data-bs-placement="top"
+                    class="btn btn-primary btn-sm"
+                    href="/view/<%= item._id %>"
+                    ><i class="bi bi-eye"></i
+                  ></a>
+  
+                  <a
+                    data-bs-toggle="tooltip"
+                    data-bs-title="Edit user"
+                    data-bs-placement="top"
+                    class="btn btn-primary btn-sm"
+                    href="/edit/<%= item._id %>" 
+                  >
+                    <i class="bi bi-pencil"></i>
+                  </a>
+                  <form action="/<%= item._id %>?_method=DELETE" method="post" style="display: inline;">
+                  <button
+                    data-bs-toggle="tooltip"
+                    data-bs-title="Delete user"
+                    data-bs-placement="top"
+                    class="btn btn-danger btn-sm"
+                    type="submit"
+                  >
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </form>
+                </td>
+              </tr>
+            <% }) %>
           </tbody>
         </table>
       </section>
