@@ -7,6 +7,11 @@ app.use(express.static('public'))
 var moment = require('moment');
 var methodOverride = require('method-override')
 app.use(methodOverride('_method'))
+const searchRoutes = require('./routes/searchRoutes')
+const deleteRoutes = require('./routes/deleteRoutes')
+const addRoutes = require('./routes/addRoutes')
+const updateRoutes = require('./routes/updateRoutes')
+const viewRoutes = require('./routes/viewRoutes')
 
 //Auto refresh
 const path = require("path");
@@ -45,64 +50,13 @@ mongoose
 })
   .catch((error) => {console.log(error)});
 
-app.post("/user/add.html", (req, res) => {
-  Mydata.create(req.body)
-     .then( result => {
-     res.redirect("/");
-     })
-  .catch( err => {
-   console.log(err);
-   });
-   });
+
     
-   app.get("/view/:id", (req, res) => {
-    Mydata.findById(req.params.id)
-    .then((result) => {res.render("user/view",{obj:result})})
-    .catch((err) => {console.log(err)})
-   });
-  
-   app.get("/edit/:id", (req, res) => {
-    Mydata.findById(req.params.id)
-    .then((result) => {res.render("user/edit",{obj:result})})
-    .catch((err) => {console.log(err)})
-  });
-
-  app.delete("/edit/:id", (req, res) => {
-    Mydata.deleteOne({ _id: req.params.id })
-  .then((result) => {res.redirect("/")})
-  .catch((err) => {console.log(err)})
-}); 
-
-app.delete("/:id", (req, res) => {
-  Mydata.findByIdAndDelete(req.params.id)
-.then((result) => {res.redirect("/")})
-.catch((err) => {console.log(err)})
-}); 
-
-app.put("/edit/:id", (req, res) => {
-  Mydata.findByIdAndUpdate(req.params.id, req.body)
-  .then((result) => {res.redirect("/")})
-.catch((err) => {console.log(err)})
-});
-
-  
-
-   
-   app.post("/search", (req, res) => {
-    Mydata.find({Second_Date: req.body.Search_Date})
-    .then((result) => {res.render("user/search",{arr:result})})
-    .catch( err => {
-     console.log(err);
-     });
-     });
-
-     app.post("/Search_Branch", (req, res) => {
-      Mydata.find({ $and: [{Second_Date: req.body.Search_Date},{Branch: req.body.Search_Branch}]})
-      .then((result) => {res.render("user/search",{arr:result})})
-      .catch( err => {
-       console.log(err);
-       });
-       });
+app.use(searchRoutes)   
+app.use(deleteRoutes)  
+app.use(addRoutes)
+app.use(updateRoutes) 
+app.use(viewRoutes) 
 
   
 
