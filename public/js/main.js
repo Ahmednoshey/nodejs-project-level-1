@@ -45,3 +45,5 @@ function changeimg(element){
 function getdates(){
   document.getElementById("SearchBranch").value = document.getElementById("searchbtn").value
 }
+
+$('#myTable').DataTable();

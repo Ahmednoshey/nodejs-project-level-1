@@ -6,8 +6,9 @@
       rel="stylesheet"
       href="../bootstrap-icons-1.10.5/font/bootstrap-icons.min.css"
     />
-    <link rel="shortcut icon" href="../img/57209070_2912465335460838_3655113767005454336_n.jpg" type="image/x-icon">
-
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="shortcut icon" href="./img/57209070_2912465335460838_3655113767005454336_n.jpg" type="image/x-icon">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
@@ -18,7 +19,8 @@
     <meta name="generator" content="Hugo 0.112.5" />
     <title>Search page</title>
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet" />
+    <link href="./css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/themes.css">
 
     <style>
       .bd-placeholder-img {
@@ -110,9 +112,12 @@
       
         <%- include('../components/navbar.ejs') %>
 
+        <% let result = 0 %>
+
         <table dir="rtl"
-          style="width: 99%"
-          class="text-center mx-auto table mt-5 table-striped table-bordered"
+        id="myTable"
+          style="width: 99%;margin-top: 5px !important;"
+          class=" dark text-center mx-auto table mt-5 table-striped table-bordered"
         >
           <thead>
             <tr>
@@ -129,6 +134,7 @@
           </thead>
           <tbody id="tbody2">
             <% arr.forEach((item,index) => { %>
+              <% result +=  +item.price; %>
               <tr>
                 <td><%= index+1 %></td>
                 <td><%= item.Customer %></td>
@@ -172,12 +178,23 @@
               </tr>
             <% }) %>
           </tbody>
+          <tfoot id="tfoot2">
+            <tr>
+              <td colspan="2" style="text-align: center;">الاجمالي</td>
+              <td colspan="4" style="text-align: center;"><%= result %></td>
+              <td colspan="3"></td>
+            
+              </tr>
+          </tfoot>
         </table>
       </section>
     </main>
-    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
 
     <script src="../js/sidebars.js"></script>
-    <script src="../js/main.js"></script>
+    <script src="../../js/main.js"></script>
   </body>
 </html>
