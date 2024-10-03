@@ -7,4 +7,5 @@ const searchController = require("../controllers/searchController")
 
 router.post("/search",searchController.searchRoutes);
 router.post("/Search_Branch", searchController.search_Routes);
-module.exports = router
+
+module.exports = router 
