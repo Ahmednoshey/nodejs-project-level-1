@@ -71,5 +71,6 @@ let ddd = parseInt(date.getDay()+1);
    
 }
 searchbtn.setAttribute("value",datevall());
+SearchBranch.setAttribute("value",datevall());
 
 
