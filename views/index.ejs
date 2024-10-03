@@ -67,7 +67,7 @@
             </thead>
             <tbody id="tbody2">
             <% arr.forEach((item,index) => { %>
-                <% result +=  +item.price; %>
+                <% result +=  +item.price.toFixed(2); %>
               <tr>
                 <td><%= index+1 %></td>
                 <td><%= item.Customer %></td>
