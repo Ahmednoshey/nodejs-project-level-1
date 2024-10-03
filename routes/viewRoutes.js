@@ -1,12 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const Mydata = require("../models/MydataSchema");
+const viewController = require("../controllers/viewController");
 
-router.get("/view/:id", (req, res) => {
-  Mydata.findById(req.params.id)
-  .then((result) => {res.render("user/view",{obj:result})})
-  .catch((err) => {console.log(err)})
- });
+router.get("/view/:id", viewController.viewRoutes);
 
 
 

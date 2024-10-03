@@ -1,25 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const Mydata = require("../models/MydataSchema");
+const searchController = require("../controllers/searchController")
 
 // search
 
-router.post("/search", (req, res) => {
-  Mydata.find({Second_Date: req.body.Search_Date})
-  .then((result) => {res.render("user/search",{arr:result})})
-  .catch( err => {
-   console.log(err);
-   });
-   });
-
-   router.post("/Search_Branch", (req, res) => {
-    Mydata.find({ $and: [{Second_Date: req.body.Search_Date},{Branch: req.body.Search_Branch}]})
-    .then((result) => {res.render("user/search",{arr:result})})
-    .catch( err => {
-     console.log(err);
-     });
-     });
-
-
-
+router.post("/search",searchController.searchRoutes);
+router.post("/Search_Branch", searchController.search_Routes);
 module.exports = router

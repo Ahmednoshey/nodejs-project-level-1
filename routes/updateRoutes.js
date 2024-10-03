@@ -1,20 +1,13 @@
 const express = require('express')
 const router = express.Router()
 const Mydata = require("../models/MydataSchema");
+const updateController = require("../controllers/updateController");
 
-router.get("/edit/:id", (req, res) => {
-  Mydata.findById(req.params.id)
-  .then((result) => {res.render("user/edit",{obj:result})})
-  .catch((err) => {console.log(err)})
-});
+router.get("/edit/:id", updateController.updateRoutes);
 
 
 
-router.put("/edit/:id", (req, res) => {
-Mydata.findByIdAndUpdate(req.params.id, req.body)
-.then((result) => {res.redirect("/")})
-.catch((err) => {console.log(err)})
-});
+router.put("/edit/:id", updateController.update_Routes);
 
 
 
