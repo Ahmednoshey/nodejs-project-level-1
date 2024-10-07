@@ -49,6 +49,7 @@
           <div class="col-md-12">
             <label for="inputcust" class="form-label">العميل :</label>
             <input
+            required
             name="Customer"
               placeholder="Customer"
               type="text"
@@ -62,6 +63,7 @@
           <div class="col-md-6">
             <label for="inputprice" class="form-label">المبلغ :</label>
             <input
+            required
             name="price"
               placeholder="price"
               type="number"
@@ -74,7 +76,7 @@
 
           <div class="col-md-6">
             <label for="inputBank" class="form-label">البنك :</label>
-            <select id="inputBank" class="form-select" onchange="changeimg(this)" name="Bank" >
+            <select id="inputBank" class="form-select" onchange="changeimg(this)" name="Bank" required>
               <option selected hidden disabled>Choose Bank ...</option>
       <% const bankarr = ["abc شركة","abc منشأة","مصر شركة","مصر فردي",
       "القاهرة شركة","القاهرة منشأة","cib","الاسكندرية شركة","الاسكندرية شخصي",
@@ -88,7 +90,7 @@
 <div>
           <div class="col-md-6">
             <label for="inputbranch" class="form-label">الفرع :</label>
-            <select id="inputbranch" class="form-select" name="Branch">
+            <select id="inputbranch" class="form-select" name="Branch" required>
               <option selected hidden disabled>Choose Branch ...</option>
               <option>نور العاشر</option>
               <option>اكتوبر</option>
@@ -100,6 +102,7 @@
           <div class="col-md-6">
             <label for="inputdate1" class="form-label">تاريخ الايداع :</label>
             <input
+            required
               type="date"
               class="form-control"
               id="inputdate1"
@@ -112,6 +115,7 @@
           <div class="col-md-6">
             <label for="inputdate2" class="form-label">تاريخ التحصيل :</label>
             <input
+            required
               type="date"
               class="form-control"
               id="inputdate2"
