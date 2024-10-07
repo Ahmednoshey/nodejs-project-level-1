@@ -13,6 +13,7 @@ const addRoutes = require('./routes/addRoutes')
 const updateRoutes = require('./routes/updateRoutes')
 const viewRoutes = require('./routes/viewRoutes')
 const adduserRoutes = require('./routes/adduserRoutes')
+const loginRoutes = require('./routes/loginRoutes')
 
 
 
@@ -55,9 +56,16 @@ app.get("/home", (req, res) => {
          });
        
       
-      
+      // signup
          app.use(adduserRoutes)  
 
+        //  login
+        app.use(loginRoutes) 
+        
+         
+
+
+      
 
 
 
