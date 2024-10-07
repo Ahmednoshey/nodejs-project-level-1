@@ -10,7 +10,7 @@ const updateRoutes = (req, res) => {
 
 const update_Routes = (req, res) => {
   Mydata.findByIdAndUpdate(req.params.id, req.body)
-  .then((result) => {res.redirect("/")})
+  .then((result) => {res.redirect("/home")})
   .catch((err) => {console.log(err)})
   }
 

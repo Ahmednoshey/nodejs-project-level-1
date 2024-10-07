@@ -1,0 +1,16 @@
+<header class="mb-auto" style="display: flex;justify-content: space-between;align-items: center;">
+  <div>
+    <h3 class=" mb-0 btn fs-2">
+      <a class="text-white fw-bold" style="text-decoration: none;" href="/">YMC</a>
+    </h3>
+    </div>
+    <nav class="nav nav-masthead">
+      <a
+        class="fw-bold btn <%= currenPage == "login"? "btn-light" : null %>"
+        aria-current="page"
+        href="/login"
+        >Login</a
+      >
+      <a class="btn fw-bold <%= currenPage == "signup"? "btn-light" : null %>" href="/register">sign up</a>
+    </nav>
+</header>

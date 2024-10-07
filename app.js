@@ -26,11 +26,10 @@ liveReloadServer.server.once("connection", () => {
   }, 100);
 });
 
-
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
+app.get("/home", (req, res) => {
   Mydata.find()
   .then((result) => {res.render("index",{arr:result,moment:moment})})
   .catch((err) => {console.log(err)})
@@ -40,7 +39,21 @@ app.get("/", (req, res) => {
  res.render("user/add")
   });
 
-  
+  app.get("/", (req, res) => {
+    res.render("wellcome.ejs")
+     });
+
+     app.get("/login", (req, res) => {
+      res.render("auth/login")
+       });
+       
+       app.get("/register", (req, res) => {
+        res.render("auth/register")
+         });
+       
+      
+
+
 mongoose
   .connect("mongodb+srv://ahmedeldomiaty0:Bhm4PvQxL0DmLahK@nodejsproject.x786z.mongodb.net/alldata?retryWrites=true&w=majority&appName=nodejsproject")
   .then(() => {
