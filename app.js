@@ -57,17 +57,13 @@ app.get("/home", (req, res) => {
        
       
       // signup
-         app.use(adduserRoutes)  
-
-        //  login
-        app.use(loginRoutes) 
-        
+         app.use(adduserRoutes) 
          
+         
+              //  login
+       app.use(loginRoutes)  
 
-
-      
-
-
+    
 
 mongoose
   .connect("mongodb+srv://ahmedeldomiaty0:Bhm4PvQxL0DmLahK@nodejsproject.x786z.mongodb.net/alldata?retryWrites=true&w=majority&appName=nodejsproject")
@@ -79,6 +75,7 @@ mongoose
   .catch((error) => {console.log(error)});
 
 
+   
    
 app.use(searchRoutes)   
 app.use(deleteRoutes)  
