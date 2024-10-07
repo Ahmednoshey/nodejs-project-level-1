@@ -12,6 +12,9 @@ const deleteRoutes = require('./routes/deleteRoutes')
 const addRoutes = require('./routes/addRoutes')
 const updateRoutes = require('./routes/updateRoutes')
 const viewRoutes = require('./routes/viewRoutes')
+const adduserRoutes = require('./routes/adduserRoutes')
+
+
 
 //Auto refresh
 const path = require("path");
@@ -46,12 +49,16 @@ app.get("/home", (req, res) => {
      app.get("/login", (req, res) => {
       res.render("auth/login")
        });
-       
+
        app.get("/register", (req, res) => {
         res.render("auth/register")
          });
        
       
+      
+         app.use(adduserRoutes)  
+
+
 
 
 mongoose
@@ -64,12 +71,17 @@ mongoose
   .catch((error) => {console.log(error)});
 
 
-    
+   
 app.use(searchRoutes)   
 app.use(deleteRoutes)  
 app.use(addRoutes)
 app.use(updateRoutes) 
 app.use(viewRoutes) 
+
+
+
+
+
 
   
 
