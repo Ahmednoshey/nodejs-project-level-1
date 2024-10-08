@@ -3,9 +3,10 @@ const router = express.Router()
 const Mydata = require("../models/MydataSchema");
 const deleteController = require("../controllers/deleteController")
 const requireAuth = require('../middleware/middleware')
+const checkIfUser = require('../middleware/userData')
 
-router.delete("/edit/:id",requireAuth, deleteController.deleteRoutes); 
+router.delete("/edit/:id",requireAuth,checkIfUser, deleteController.deleteRoutes); 
 
-router.delete("/:id", deleteController.delete_Routes); 
+router.delete("/:id", requireAuth,checkIfUser, deleteController.delete_Routes); 
 
 module.exports = router

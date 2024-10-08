@@ -3,7 +3,6 @@ const app = express();
 const port = process.env.PORT || 3000;
 const mongoose = require("mongoose");
 const Mydata = require("./models/MydataSchema");
-const AuthUser = require("./models/SignupSchema");
 app.use(express.static('public'))
 var moment = require('moment');
 var methodOverride = require('method-override')
@@ -16,7 +15,7 @@ const viewRoutes = require('./routes/viewRoutes')
 const adduserRoutes = require('./routes/adduserRoutes')
 const loginRoutes = require('./routes/loginRoutes')
 const requireAuth = require('./middleware/middleware')
-
+const checkIfUser = require('./middleware/userData')
 
 //Auto refresh
 const path = require("path");
@@ -41,38 +40,19 @@ app.use(cookieParser())
 
 
 
-app.get("/home",requireAuth, (req, res) => {
+app.get("/home",requireAuth,checkIfUser,(req, res) => {
   Mydata.find()
   .then((result) => {res.render("index",{arr:result,moment:moment})})
   .catch((err) => {console.log(err)})
  });
 
- app.get("/user/add.html",requireAuth, (req, res) => {
+ app.get("/user/add.html",requireAuth,checkIfUser, (req, res) => {
  res.render("user/add")
   });
 
-  //check user login for show other design
-  var jwt = require("jsonwebtoken");
-  const checkIfUser = (req, res, next) => {
-    const token = req.cookies.jwt;
-    if (token) {
-      jwt.verify(token, "layan", async (err, decoded) => {
-        if (err) {
-          res.locals.user = null;
-          next();
-        } else {
-          const currentUser = await AuthUser.findById(decoded.id);
-          res.locals.user = currentUser;
-          next();
-        }
-      });
-    } else {
-      res.locals.user = null;
-      next();
-    }
-  };
+  
 
-  app.get("*",checkIfUser);
+  app.get("*",checkIfUser);   
 
   app.get("/",checkIfUser, (req, res) => {
     res.render("wellcome.ejs")
@@ -94,6 +74,13 @@ app.get("/home",requireAuth, (req, res) => {
               //  login
        app.use(loginRoutes)  
 
+
+       //signout
+       app.get("/signout", (req, res) => {
+        res.cookie("jwt", "", { maxAge: 1 });
+        res.redirect("/");
+      });
+
     
 
 mongoose
@@ -107,7 +94,7 @@ mongoose
 
 
    
-   
+
 app.use(searchRoutes)   
 app.use(deleteRoutes)  
 app.use(addRoutes)
