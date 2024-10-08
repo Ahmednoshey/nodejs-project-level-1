@@ -3,6 +3,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 const mongoose = require("mongoose");
 const Mydata = require("./models/MydataSchema");
+const AuthUser = require("./models/SignupSchema");
 app.use(express.static('public'))
 var moment = require('moment');
 var methodOverride = require('method-override')
@@ -50,15 +51,38 @@ app.get("/home",requireAuth, (req, res) => {
  res.render("user/add")
   });
 
-  app.get("/", (req, res) => {
+  //check user login for show other design
+  var jwt = require("jsonwebtoken");
+  const checkIfUser = (req, res, next) => {
+    const token = req.cookies.jwt;
+    if (token) {
+      jwt.verify(token, "layan", async (err, decoded) => {
+        if (err) {
+          res.locals.user = null;
+          next();
+        } else {
+          const currentUser = await AuthUser.findById(decoded.id);
+          res.locals.user = currentUser;
+          next();
+        }
+      });
+    } else {
+      res.locals.user = null;
+      next();
+    }
+  };
+
+  app.get("*",checkIfUser);
+
+  app.get("/",checkIfUser, (req, res) => {
     res.render("wellcome.ejs")
      });
 
-     app.get("/login", (req, res) => {
+     app.get("/login",checkIfUser,(req, res) => {
       res.render("auth/login")
        });
 
-       app.get("/register", (req, res) => {
+       app.get("/register",checkIfUser,(req, res) => {
         res.render("auth/register")
          });
        
