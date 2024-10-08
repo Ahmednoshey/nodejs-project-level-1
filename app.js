@@ -14,7 +14,7 @@ const updateRoutes = require('./routes/updateRoutes')
 const viewRoutes = require('./routes/viewRoutes')
 const adduserRoutes = require('./routes/adduserRoutes')
 const loginRoutes = require('./routes/loginRoutes')
-
+const requireAuth = require('./middleware/middleware')
 
 
 //Auto refresh
@@ -33,13 +33,20 @@ liveReloadServer.server.once("connection", () => {
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/home", (req, res) => {
+//cookie-parser
+var cookieParser = require('cookie-parser')
+app.use(cookieParser())
+
+
+
+
+app.get("/home",requireAuth, (req, res) => {
   Mydata.find()
   .then((result) => {res.render("index",{arr:result,moment:moment})})
   .catch((err) => {console.log(err)})
  });
 
- app.get("/user/add.html", (req, res) => {
+ app.get("/user/add.html",requireAuth, (req, res) => {
  res.render("user/add")
   });
 
