@@ -1,16 +1,16 @@
-var moment = require('moment');
-const Mydata = require("../models/MydataSchema");
+
 const bcrypt = require('bcrypt');
 const AuthUser = require("../models/SignupSchema");
+var jwt = require("jsonwebtoken");
 const loginRoutes = async (req, res) => {
   try {
    const LoginUser = await AuthUser.findOne({Email:req.body.Email});
    if (LoginUser != null) {
      const checkhashEmail = await bcrypt.compare(req.body.Password,LoginUser.Password)
      if (checkhashEmail) {
-      Mydata.find()
-      .then((result) => {res.render("index",{arr:result,moment:moment})})
-      .catch((err) => {console.log(err)})
+        var token = jwt.sign({ id: LoginUser._id }, "layan");
+        res.cookie("jwt", token, { httpOnly: true, maxAge: 86400000 });
+        res.redirect("/home")
      }else{
        console.log("Password Not Correct");
      }
