@@ -33,6 +33,7 @@ liveReloadServer.server.once("connection", () => {
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
+require('dotenv').config()
 
 //cookie-parser
 var cookieParser = require('cookie-parser')
@@ -82,10 +83,10 @@ app.get("/home",requireAuth,checkIfUser,(req, res) => {
         res.redirect("/");
       });
 
-    
+
 
 mongoose
-  .connect("mongodb+srv://ahmedeldomiaty0:Bhm4PvQxL0DmLahK@nodejsproject.x786z.mongodb.net/alldata?retryWrites=true&w=majority&appName=nodejsproject")
+  .connect(process.env.MONGODB_URL)
   .then(() => {
     app.listen(port, () => {
     console.log(`http://localhost:${port}/`);

@@ -12,7 +12,7 @@ const addUserRoutes = async (req, res) => {
       return   res.json(  {existEmail: "Email already exist, Try to Login"  }   )  
     }
     const newUser  = await AuthUser.create(req.body);
-    var token = jwt.sign({ id: newUser._id }, "layan");
+    var token = jwt.sign({ id: newUser._id }, process.env.JWTSECRET_KEY);
     res.cookie("jwt", token, { httpOnly: true, maxAge: 86400000 });
     res.json(   {id: newUser._id}     )
   } catch (error) {

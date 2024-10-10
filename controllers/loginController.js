@@ -8,7 +8,7 @@ const loginRoutes = async (req, res) => {
    if (LoginUser != null) {
      const checkhashEmail = await bcrypt.compare(req.body.Password,LoginUser.Password)
      if (checkhashEmail) {
-        var token = jwt.sign({ id: LoginUser._id }, "layan");
+        var token = jwt.sign({ id: LoginUser._id }, process.env.JWTSECRET_KEY);
         res.cookie("jwt", token, { httpOnly: true, maxAge: 86400000 });
         res.json(   {id: LoginUser._id}     )
      }else{
