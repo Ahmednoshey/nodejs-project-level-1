@@ -52,7 +52,8 @@ body {
 #Error_Email,
 #Error_Password,
 #Error_UserName,
-#Error_Message{
+#Error_Email,
+#Error_Pass{
 color: #ff5d79;
 margin-left: 0.4rem;
 font-size: 600;

@@ -1,4 +1,5 @@
-
+const {validationResult } = require("express-validator");
+var jwt = require("jsonwebtoken");
 const AuthUser = require("../models/SignupSchema");
 const addUserRoutes = async (req, res) => {
   try {

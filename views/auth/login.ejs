@@ -49,17 +49,17 @@
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email address</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="Email">
-          
+          <p id="Error_Email"></p>
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Password</label>
             <input type="password" class="form-control" id="exampleInputPassword1" name="Password">
+            <p id="Error_Pass"></p>
           </div>
           <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
             <label class="form-check-label" for="exampleCheck1">Check me out</label>
           </div>
-          <p id="Error_Message"></p>
           <button type="submit" class="btn btn-primary">log in</button>
         </form>
       </main>
@@ -82,9 +82,13 @@
         });
         const data = await res.json();
         
-        if (data.ErrorMessage) {
-          Error_Message.innerText = data.ErrorMessage
+        if (data.ErrorPass) {
+          Error_Pass.innerText = data.ErrorPass
         }
+        if (data.ErrorEmail) {
+          Error_Email.innerText = data.ErrorEmail
+        }
+
         if (data.id) {
           location.assign("/home")
         }      
