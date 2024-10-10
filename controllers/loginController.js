@@ -1,4 +1,4 @@
-const {validationResult } = require("express-validator");
+
 const bcrypt = require('bcrypt');
 const AuthUser = require("../models/SignupSchema");
 var jwt = require("jsonwebtoken");
