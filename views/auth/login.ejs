@@ -72,6 +72,8 @@
     <script>
       loginForm.addEventListener("submit", async (e) => {
         e.preventDefault();
+        Error_Pass.innerText="";
+        Error_Email.innerText="";
         const res = await fetch("/login", {
           method: "POST",
           body: JSON.stringify({
