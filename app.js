@@ -32,6 +32,7 @@ liveReloadServer.server.once("connection", () => {
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json())
 
 //cookie-parser
 var cookieParser = require('cookie-parser')
