@@ -1,4 +1,4 @@
-const {validationResult } = require("express-validator");
+
 const AuthUser = require("../models/SignupSchema");
 const addUserRoutes = async (req, res) => {
   try {

@@ -91,9 +91,7 @@
           headers: { "Content-Type": "application/json" },
         });
         const data = await res.json();
-        console.log(data);
         if (data.arrValidationError) {
-          console.log(data.arrValidationError)
           data.arrValidationError.forEach(item => {
             if (item.path == "UserName") {
             Error_UserName.innerText = item.msg
@@ -108,7 +106,6 @@
         });  
         }
         if (data.existEmail) {
-          console.log(data.existEmail)
           Error_Email.innerText = data.existEmail
         }
         if (data.id) {
