@@ -5,6 +5,7 @@ const authuserSchema = new Schema({
   UserName: String,
   Email: String,
   Password: String,
+  profileImage:String,
 },{ timestamps: true });
 authuserSchema.pre("save", async function (next) {
   const salt = await bcrypt.genSalt();
