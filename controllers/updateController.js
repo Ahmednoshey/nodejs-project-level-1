@@ -1,8 +1,8 @@
-
+var moment = require("moment");
 const Mydata = require("../models/MydataSchema");
 const updateRoutes = (req, res) => {
   Mydata.findById(req.params.id)
-  .then((result) => {res.render("user/edit",{obj:result})})
+  .then((result) => {res.render("user/edit",{obj:result,moment:moment})})
   .catch((err) => {console.log(err)})
 }
 

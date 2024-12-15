@@ -8,6 +8,6 @@ const checkIfUser = require('../middleware/userData')
 // search
 
 router.post("/search",requireAuth,checkIfUser,searchController.searchRoutes);
-router.post("/Search_Branch",requireAuth,checkIfUser, searchController.search_Routes);
+
 
 module.exports = router 
