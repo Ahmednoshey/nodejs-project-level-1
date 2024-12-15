@@ -1,5 +1,5 @@
-const Mydata = require("../models/MydataSchema");
 
+const Mydata = require("../models/MydataSchema");
 const updateRoutes = (req, res) => {
   Mydata.findById(req.params.id)
   .then((result) => {res.render("user/edit",{obj:result})})

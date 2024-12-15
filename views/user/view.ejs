@@ -159,7 +159,7 @@
           class="ms-1 table mt-5 table-striped table-bordered" dir="rtl">
 <thead>
   <tr>
-    <th scope="col">العميل</th>
+    <th scope="col">الخزينة</th>
     <th class="fw-normal" scope="col"><%= obj.Customer %></th>
   </tr>
 </thead>
@@ -175,23 +175,23 @@
   </tr>
 
   <tr>
-    <th scope="row">الفرع</th>
+    <th scope="row">نوع السداد</th>
     <td><%= obj.Branch %></td>
   </tr>
 
   <tr>
-    <th scope="row">تاريخ الايداع</th>
+    <th scope="row">رقم الشيك</th>
     <td><%= obj.First_Date %></td>
   </tr>
 
   <tr>
-    <th scope="row">تاريخ التحصيل</th>
+    <th scope="row">التاريخ</th>
     <td><%= obj.Second_Date %></td>
   </tr>
 
   <tr>
-    <th scope="row">حالة الشيك</th>
-    <td><%= obj.Info %></td>
+    <th scope="row">الوقت</th>
+    <td><%=obj.createdAt;   %></td>
   </tr>
 </tbody>
           

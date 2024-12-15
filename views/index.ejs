@@ -55,13 +55,13 @@
             <thead >
               <tr>
                 <th scope="col">ID</th>
-                <th scope="col">العميل</th>
+                <th scope="col">التاريخ</th>
+                <th scope="col">الخزينة</th>
                 <th scope="col">المبلغ</th>
                 <th scope="col">البنك</th>
-                <th scope="col">الفرع</th>
-                <th scope="col">تاريخ الايداع</th>
-                <th scope="col">تاريخ التحصيل</th>
-                <th scope="col">الحاله</th>
+                <th scope="col">نوع السداد</th>
+                <th scope="col">رقم الشيك</th>
+                <th scope="col">الوقت</th>
                 <th scope="col">action</th>
               </tr>
             </thead>
@@ -70,13 +70,13 @@
                 <% result +=  +item.price; %>
               <tr>
                 <td><%= index+1 %></td>
+                <td><%=item.Second_Date  %></td>
                 <td><%= item.Customer %></td>
                 <td><%=item.price  %></td>
                 <td><%=item.Bank  %></td>
                 <td><%=item.Branch  %></td>
                 <td><%=item.First_Date  %></td>
-                <td><%=item.Second_Date  %></td>
-                <td><%=item.Info  %></td>
+                <td><%=moment(item.createdAt).format('LT');   %></td>
                 <td>
                   <a
                     data-bs-toggle="tooltip"

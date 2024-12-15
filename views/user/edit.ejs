@@ -39,14 +39,14 @@
       }
       .photobank{
         position: absolute;
-        top: 200px;
+        top: 300px;
         left: -150px;
   
       }
       .photobank img{
-        height: 400px;
+        height: 350px;
         border-radius: 10px;
-        width: 400px;
+        width: 350px;
       }
 
       @media (min-width: 768px) {
@@ -158,16 +158,27 @@
 
 
         <form action="/edit/<%= obj._id %>?_method=PUT" method="post" class="mx-0 row gx-3 gy-4  info" dir="rtl">
+          
+          <div>
+            <div class="col-md-6">
+              <label for="inputdate2" class="form-label">التاريخ :</label>
+              <input
+              name="Second_Date"
+                type="date"
+                class="form-control"
+                id="inputdate2"
+                value="<%= obj.Second_Date %>"
+              />
+            </div>
+          </div>
+          
           <div class="col-md-12">
-            <label for="inputcust" class="form-label">العميل :</label>
-            <input
-              name="Customer"
-              placeholder="Customer"
-              type="text"
-              class="form-control"
-              id="inputcust"
-              value="<%= obj.Customer %>"
-            />
+            <label for="inputcust" class="form-label">الخزينة :</label>
+            <select id="inputcust" class="form-select" name="Customer">
+              <option selected hidden disabled>Choose Branch ...</option>
+              <option <%=obj.Customer === "خزينة اكتوبر"?"selected":null   %>>خزينة اكتوبر</option>
+              <option <%=obj.Customer === "خزينة نور العاشر"?"selected":null   %>>خزينة نور العاشر</option>
+            </select>
           </div>
 
       
@@ -201,21 +212,21 @@
           </div>
 <div>
           <div class="col-md-6">
-            <label for="inputbranch" class="form-label">الفرع :</label>
+            <label for="inputbranch" class="form-label">نوع السداد :</label>
             <select id="inputbranch" class="form-select" name="Branch">
               <option selected hidden disabled>Choose Branch ...</option>
-              <option <%=obj.Branch === "نور العاشر"?"selected":null   %>>نور العاشر</option>
-              <option <%=obj.Branch === "اكتوبر"?"selected":null   %>>اكتوبر</option>
+              <option <%=obj.Branch === "نقدي"?"selected":null   %>>نقدي</option>
+              <option <%=obj.Branch === "شيك"?"selected":null   %>>شيك</option>
             </select>
           </div>
         </div>
           
         <div>
           <div class="col-md-6">
-            <label for="inputdate1" class="form-label">تاريخ الايداع :</label>
+            <label for="inputdate1" class="form-label"> رقم الشيك :</label>
             <input
             name="First_Date"
-              type="date"
+              type="text"
               class="form-control"
               id="inputdate1"
               value="<%= obj.First_Date %>"
@@ -223,28 +234,10 @@
           </div>
         </div>
 
-        <div>
-          <div class="col-md-6">
-            <label for="inputdate2" class="form-label">تاريخ التحصيل :</label>
-            <input
-            name="Second_Date"
-              type="date"
-              class="form-control"
-              id="inputdate2"
-              value="<%= obj.Second_Date %>"
-            />
-          </div>
-        </div>
+    
 
 <div>
-          <div class="col-md-6">
-            <label for="inputhala" class="form-label">حالة الشيك :</label>
-            <select id="inputhala" class="form-select" name="Info">
-              <option selected hidden disabled>Choose Info ...</option>
-              <option <%=obj.Info === "تم التحصيل"?"selected":null   %>>تم التحصيل</option>
-              <option <%=obj.Info === "مرتد"?"selected":null   %>>مرتد</option>
-            </select>
-          </div>
+      
 
           
             <div class="col-md-6 photobank">
@@ -253,7 +246,8 @@
             <br>
 
             <div class="col-12">
-            <button type="submit" class="btn btn-primary">
+            <button
+            type="submit" class="btn btn-primary">
               Update changes
             </button>
       

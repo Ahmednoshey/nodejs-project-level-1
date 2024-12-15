@@ -5,6 +5,7 @@ const updateController = require("../controllers/updateController");
 const requireAuth = require('../middleware/middleware')
 const checkIfUser = require('../middleware/userData')
 
+
 router.get("/edit/:id",requireAuth,checkIfUser, updateController.updateRoutes);
 
 
