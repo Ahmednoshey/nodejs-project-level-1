@@ -74,3 +74,12 @@ searchbtn.setAttribute("value",datevall());
 SearchBranch.setAttribute("value",datevall());
 
 
+
+
+
+
+function exportToExcel() {
+  var table = document.getElementById("myTable");
+  var workbook = XLSX.utils.table_to_book(table, {sheet: "Sheet1"});
+  XLSX.writeFile(workbook, "table.xlsx");
+}

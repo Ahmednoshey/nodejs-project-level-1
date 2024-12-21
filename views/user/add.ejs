@@ -65,8 +65,17 @@
             <label for="inputcust" class="form-label">الخزينة :</label>
             <select id="inputcust" class="form-select" name="Customer">
               <option selected hidden disabled>Choose Customer ...</option>
+              <option>خزينة دمياط</option>
               <option>خزينة اكتوبر</option>
               <option>خزينة نور العاشر</option>
+              <% const bankar = ["abc شركة","abc منشأة","مصر شركة","مصر فردي",
+              "القاهرة شركة","القاهرة منشأة","cib","الاسكندرية شركة","الاسكندرية شخصي",
+              "قطر","الاهلي"] %>
+        
+                      <% bankar.forEach(item => { %>
+                        <option value="<%= item %>"><%= item %></option>
+                      <% }) %>
+                    </select>
             </select>
           </div>
 
@@ -106,6 +115,7 @@
               <option selected hidden disabled>Choose Branch ...</option>
               <option>شيك</option>
               <option>نقدي</option>
+              <option>سويفت</option>
             </select>
           </div>
         </div>
