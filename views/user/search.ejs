@@ -143,7 +143,7 @@
             <td><%=item.Bank  %></td>
             <td><%=item.Branch  %></td>
             <td><%=item.First_Date  %></td>
-            <td><%=moment(item.createdAt).format('LT');   %></td>
+            <td><%=moment(item.createdAt).add(2).format('LT');   %></td>
                 <td>
                   <a
                     data-bs-toggle="tooltip"
