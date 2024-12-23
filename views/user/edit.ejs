@@ -175,9 +175,18 @@
           <div class="col-md-12">
             <label for="inputcust" class="form-label">الخزينة :</label>
             <select id="inputcust" class="form-select" name="Customer">
-              <option selected hidden disabled>Choose Branch ...</option>
+              <option selected hidden disabled>Choose Customer ...</option>
+              <option <%=obj.Customer === "خزينة دمياط"?"selected":null   %>>خزينة دمياط</option>
               <option <%=obj.Customer === "خزينة اكتوبر"?"selected":null   %>>خزينة اكتوبر</option>
               <option <%=obj.Customer === "خزينة نور العاشر"?"selected":null   %>>خزينة نور العاشر</option>
+              <option <%=obj.Customer === "عميل"?"selected":null   %>>عميل</option>
+              <% const bankar = ["abc شركة","abc منشأة","مصر شركة","مصر فردي",
+              "القاهرة شركة","القاهرة منشأة","cib","الاسكندرية شركة","الاسكندرية شخصي",
+              "قطر","الاهلي"] %>
+        
+                      <% bankar.forEach(item => { %>
+                        <option <%=obj.Customer === item?"selected":null   %>><%= item %></option>
+                      <% }) %>
             </select>
           </div>
 
@@ -217,6 +226,7 @@
               <option selected hidden disabled>Choose Branch ...</option>
               <option <%=obj.Branch === "نقدي"?"selected":null   %>>نقدي</option>
               <option <%=obj.Branch === "شيك"?"selected":null   %>>شيك</option>
+              <option <%=obj.Branch === "سويفت"?"selected":null   %>>سويفت</option>
             </select>
           </div>
         </div>
